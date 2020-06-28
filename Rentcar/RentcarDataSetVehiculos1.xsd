@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="RentcarDataSetVehiculos" targetNamespace="http://tempuri.org/RentcarDataSetVehiculos1.xsd" xmlns:mstns="http://tempuri.org/RentcarDataSetVehiculos1.xsd" xmlns="http://tempuri.org/RentcarDataSetVehiculos1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="RentcarConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="RentcarConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Rentcar.Properties.Settings.GlobalReference.Default.RentcarConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vehiculosTableAdapter" GeneratorDataComponentClassName="vehiculosTableAdapter" Name="vehiculos" UserDataComponentName="vehiculosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="RentcarConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        vehiculos.id, vehiculos.descripcion, vehiculos.chasis, vehiculos.motor, vehiculos.placa, vehiculos.anio, tipovehiculos.nombre AS tipo_vehiculo_id, marcas.nombre AS marca_id, modelos.nombre AS modelo_id, 
+                         combustibles.nombre AS combustible_id, vehiculos.estado
+FROM            vehiculos INNER JOIN
+                         tipovehiculos ON vehiculos.tipo_vehiculo_id = tipovehiculos.id INNER JOIN
+                         marcas ON vehiculos.marca_id = marcas.id INNER JOIN
+                         modelos ON vehiculos.modelo_id = modelos.id INNER JOIN
+                         combustibles ON vehiculos.combustible_id = combustibles.id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="descripcion" DataSetColumn="descripcion" />
+              <Mapping SourceColumn="chasis" DataSetColumn="chasis" />
+              <Mapping SourceColumn="motor" DataSetColumn="motor" />
+              <Mapping SourceColumn="placa" DataSetColumn="placa" />
+              <Mapping SourceColumn="anio" DataSetColumn="anio" />
+              <Mapping SourceColumn="estado" DataSetColumn="estado" />
+              <Mapping SourceColumn="tipo_vehiculo_id" DataSetColumn="tipo_vehiculo_id" />
+              <Mapping SourceColumn="marca_id" DataSetColumn="marca_id" />
+              <Mapping SourceColumn="modelo_id" DataSetColumn="modelo_id" />
+              <Mapping SourceColumn="combustible_id" DataSetColumn="combustible_id" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="RentcarDataSetVehiculos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="RentcarDataSetVehiculos" msprop:Generator_UserDSName="RentcarDataSetVehiculos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vehiculos" msprop:Generator_TableClassName="vehiculosDataTable" msprop:Generator_TableVarName="tablevehiculos" msprop:Generator_RowChangedName="vehiculosRowChanged" msprop:Generator_TablePropName="vehiculos" msprop:Generator_RowDeletingName="vehiculosRowDeleting" msprop:Generator_RowChangingName="vehiculosRowChanging" msprop:Generator_RowEvHandlerName="vehiculosRowChangeEventHandler" msprop:Generator_RowDeletedName="vehiculosRowDeleted" msprop:Generator_RowClassName="vehiculosRow" msprop:Generator_UserTableName="vehiculos" msprop:Generator_RowEvArgName="vehiculosRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="descripcion" msprop:Generator_ColumnVarNameInTable="columndescripcion" msprop:Generator_ColumnPropNameInRow="descripcion" msprop:Generator_ColumnPropNameInTable="descripcionColumn" msprop:Generator_UserColumnName="descripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="chasis" msprop:Generator_ColumnVarNameInTable="columnchasis" msprop:Generator_ColumnPropNameInRow="chasis" msprop:Generator_ColumnPropNameInTable="chasisColumn" msprop:Generator_UserColumnName="chasis" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="motor" msprop:Generator_ColumnVarNameInTable="columnmotor" msprop:Generator_ColumnPropNameInRow="motor" msprop:Generator_ColumnPropNameInTable="motorColumn" msprop:Generator_UserColumnName="motor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="placa" msprop:Generator_ColumnVarNameInTable="columnplaca" msprop:Generator_ColumnPropNameInRow="placa" msprop:Generator_ColumnPropNameInTable="placaColumn" msprop:Generator_UserColumnName="placa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="anio" msprop:Generator_ColumnVarNameInTable="columnanio" msprop:Generator_ColumnPropNameInRow="anio" msprop:Generator_ColumnPropNameInTable="anioColumn" msprop:Generator_UserColumnName="anio" type="xs:int" minOccurs="0" />
+              <xs:element name="estado" msprop:Generator_ColumnVarNameInTable="columnestado" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_UserColumnName="estado" type="xs:boolean" />
+              <xs:element name="tipo_vehiculo_id" msprop:Generator_ColumnVarNameInTable="columntipo_vehiculo_id" msprop:Generator_ColumnPropNameInRow="tipo_vehiculo_id" msprop:Generator_ColumnPropNameInTable="tipo_vehiculo_idColumn" msprop:Generator_UserColumnName="tipo_vehiculo_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="90" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="marca_id" msprop:Generator_ColumnVarNameInTable="columnmarca_id" msprop:Generator_ColumnPropNameInRow="marca_id" msprop:Generator_ColumnPropNameInTable="marca_idColumn" msprop:Generator_UserColumnName="marca_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="90" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="modelo_id" msprop:Generator_ColumnVarNameInTable="columnmodelo_id" msprop:Generator_ColumnPropNameInRow="modelo_id" msprop:Generator_ColumnPropNameInTable="modelo_idColumn" msprop:Generator_UserColumnName="modelo_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="90" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="combustible_id" msprop:Generator_ColumnVarNameInTable="columncombustible_id" msprop:Generator_ColumnPropNameInRow="combustible_id" msprop:Generator_ColumnPropNameInTable="combustible_idColumn" msprop:Generator_UserColumnName="combustible_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="90" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vehiculos" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

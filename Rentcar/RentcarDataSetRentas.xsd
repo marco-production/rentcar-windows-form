@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="RentcarDataSetRentas" targetNamespace="http://tempuri.org/RentcarDataSetRentas.xsd" xmlns:mstns="http://tempuri.org/RentcarDataSetRentas.xsd" xmlns="http://tempuri.org/RentcarDataSetRentas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="RentcarConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="RentcarConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Rentcar.Properties.Settings.GlobalReference.Default.RentcarConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="rentasTableAdapter" GeneratorDataComponentClassName="rentasTableAdapter" Name="rentas" UserDataComponentName="rentasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="RentcarConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        rentas.id, rentas.fecha_renta, rentas.fecha_devolucion, { fn CONCAT('RD$ ', CAST(rentas.monto * rentas.dias AS VARCHAR)) } AS monto, rentas.comentario, empleados.full_name AS empleado_id, 
+                         vehiculos.vehiculo AS vehiculo_id, clientes.full_name AS cliente_id, rentas.estado
+FROM            rentas INNER JOIN
+                         empleados ON rentas.empleado_id = empleados.id INNER JOIN
+                         vehiculos ON rentas.vehiculo_id = vehiculos.id INNER JOIN
+                         clientes ON rentas.cliente_id = clientes.id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="fecha_renta" DataSetColumn="fecha_renta" />
+              <Mapping SourceColumn="fecha_devolucion" DataSetColumn="fecha_devolucion" />
+              <Mapping SourceColumn="comentario" DataSetColumn="comentario" />
+              <Mapping SourceColumn="estado" DataSetColumn="estado" />
+              <Mapping SourceColumn="monto" DataSetColumn="monto" />
+              <Mapping SourceColumn="empleado_id" DataSetColumn="empleado_id" />
+              <Mapping SourceColumn="vehiculo_id" DataSetColumn="vehiculo_id" />
+              <Mapping SourceColumn="cliente_id" DataSetColumn="cliente_id" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="RentcarConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByAllFilter" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByAllFilter" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByAllFilter">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT rentas.id, rentas.fecha_renta, rentas.fecha_devolucion, { fn CONCAT('RD$ ' ,CAST(rentas.monto * rentas.dias AS VARCHAR)) } AS monto, rentas.comentario, empleados.full_name AS empleado_id, vehiculos.vehiculo AS vehiculo_id, clientes.full_name AS cliente_id, rentas.estado
+FROM rentas 
+inner join empleados on rentas.empleado_id = empleados.id
+inner join vehiculos on rentas.vehiculo_id = vehiculos.id 
+inner join clientes on rentas.cliente_id = clientes.id
+WHERE (empleado_id = @ParameterEmpleado) AND  (fecha_renta &gt;= @ParameterFechaRenta) AND (fecha_devolucion &lt;= @ParameterFechaDevolucion)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="ParameterEmpleado" ColumnName="empleado_id" DataSourceName="Rentcar.dbo.rentas" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ParameterEmpleado" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="empleado_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ParameterFechaRenta" ColumnName="fecha_renta" DataSourceName="Rentcar.dbo.rentas" DataTypeServer="date" DbType="AnsiString" Direction="Input" ParameterName="@ParameterFechaRenta" Precision="0" ProviderType="Date" Scale="0" Size="3" SourceColumn="fecha_renta" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ParameterFechaDevolucion" ColumnName="fecha_devolucion" DataSourceName="Rentcar.dbo.rentas" DataTypeServer="date" DbType="AnsiString" Direction="Input" ParameterName="@ParameterFechaDevolucion" Precision="0" ProviderType="Date" Scale="0" Size="3" SourceColumn="fecha_devolucion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="RentcarConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByDate" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByDate" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillByDate">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT rentas.id, rentas.fecha_renta, rentas.fecha_devolucion, { fn CONCAT('RD$ ' ,CAST(rentas.monto * rentas.dias AS VARCHAR)) } AS monto, rentas.comentario, empleados.full_name AS empleado_id, vehiculos.vehiculo AS vehiculo_id, clientes.full_name AS cliente_id, rentas.estado
+FROM rentas 
+inner join empleados on rentas.empleado_id = empleados.id
+inner join vehiculos on rentas.vehiculo_id = vehiculos.id 
+inner join clientes on rentas.cliente_id = clientes.id
+WHERE (fecha_renta &gt;= @ParameterFechaRenta) AND (fecha_devolucion &lt;= @ParameterFechaDevolucion)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="ParameterFechaRenta" ColumnName="fecha_renta" DataSourceName="Rentcar.dbo.rentas" DataTypeServer="date" DbType="AnsiString" Direction="Input" ParameterName="@ParameterFechaRenta" Precision="0" ProviderType="Date" Scale="0" Size="3" SourceColumn="fecha_renta" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ParameterFechaDevolucion" ColumnName="fecha_devolucion" DataSourceName="Rentcar.dbo.rentas" DataTypeServer="date" DbType="AnsiString" Direction="Input" ParameterName="@ParameterFechaDevolucion" Precision="0" ProviderType="Date" Scale="0" Size="3" SourceColumn="fecha_devolucion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="RentcarDataSetRentas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="RentcarDataSetRentas" msprop:Generator_UserDSName="RentcarDataSetRentas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="rentas" msprop:Generator_TableClassName="rentasDataTable" msprop:Generator_TableVarName="tablerentas" msprop:Generator_RowChangedName="rentasRowChanged" msprop:Generator_TablePropName="rentas" msprop:Generator_RowDeletingName="rentasRowDeleting" msprop:Generator_RowChangingName="rentasRowChanging" msprop:Generator_RowEvHandlerName="rentasRowChangeEventHandler" msprop:Generator_RowDeletedName="rentasRowDeleted" msprop:Generator_RowClassName="rentasRow" msprop:Generator_UserTableName="rentas" msprop:Generator_RowEvArgName="rentasRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="fecha_renta" msprop:Generator_ColumnVarNameInTable="columnfecha_renta" msprop:Generator_ColumnPropNameInRow="fecha_renta" msprop:Generator_ColumnPropNameInTable="fecha_rentaColumn" msprop:Generator_UserColumnName="fecha_renta" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="fecha_devolucion" msprop:Generator_ColumnVarNameInTable="columnfecha_devolucion" msprop:Generator_ColumnPropNameInRow="fecha_devolucion" msprop:Generator_ColumnPropNameInTable="fecha_devolucionColumn" msprop:Generator_UserColumnName="fecha_devolucion" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="comentario" msprop:Generator_ColumnVarNameInTable="columncomentario" msprop:Generator_ColumnPropNameInRow="comentario" msprop:Generator_ColumnPropNameInTable="comentarioColumn" msprop:Generator_UserColumnName="comentario" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="estado" msprop:Generator_ColumnVarNameInTable="columnestado" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_UserColumnName="estado" type="xs:boolean" />
+              <xs:element name="monto" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnmonto" msprop:Generator_ColumnPropNameInRow="monto" msprop:Generator_ColumnPropNameInTable="montoColumn" msprop:Generator_UserColumnName="monto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="34" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="empleado_id" msprop:Generator_ColumnVarNameInTable="columnempleado_id" msprop:Generator_ColumnPropNameInRow="empleado_id" msprop:Generator_ColumnPropNameInTable="empleado_idColumn" msprop:Generator_UserColumnName="empleado_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="90" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="vehiculo_id" msprop:Generator_ColumnVarNameInTable="columnvehiculo_id" msprop:Generator_ColumnPropNameInRow="vehiculo_id" msprop:Generator_ColumnPropNameInTable="vehiculo_idColumn" msprop:Generator_UserColumnName="vehiculo_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="120" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cliente_id" msprop:Generator_ColumnVarNameInTable="columncliente_id" msprop:Generator_ColumnPropNameInRow="cliente_id" msprop:Generator_ColumnPropNameInTable="cliente_idColumn" msprop:Generator_UserColumnName="cliente_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="90" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:rentas" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
